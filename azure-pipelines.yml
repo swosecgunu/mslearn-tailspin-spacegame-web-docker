@@ -29,7 +29,7 @@ stages:
           $(tag)
     - task: CmdLine@2
       inputs:
-        script: 'twistcli images scan — address $(twistclockurl) — user $(twistclockusername) — password $(twistclockpassword) — details'
+        script: 'twistcli images scan $(RegistryName)/$(webRepository):$(build.buildId) --repository engtest —-address $(twistclockurl) —user $(twistclockusername) —password $(twistclockpassword) —-details'
 
 - stage: 'Deploy'
   displayName: 'Deploy the container'
