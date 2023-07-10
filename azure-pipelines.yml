@@ -32,7 +32,7 @@ stages:
         script: 'twistcli images scan $(RegistryName)/$(webRepository):$(build.buildId) --repository engtest --address $(twistclockurl) -u $(twistclockusername) -p $(twistclockpassword) --details'
     - task: CmdLine@2
       inputs:
-        script: 'twistcli coderepo scan . --repository engtest --address $(twistclockurl) -u $(twistclockusername) -p $(twistclockpassword) --details'
+        script: 'twistcli coderepo scan $(Build.Repository.LocalPath) --repository $(webRepository) --address $(twistclockurl) -u $(twistclockusername) -p $(twistclockpassword) --details'
 
 - stage: 'Deploy'
   displayName: 'Deploy the container'
